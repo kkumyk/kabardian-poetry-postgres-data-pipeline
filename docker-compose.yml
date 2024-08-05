@@ -1,0 +1,22 @@
+services:
+  etl_script:
+    build:
+      context: ./poems_data # dir containing the Dockerfile and data_dump.p
+      dockerfile: Dockerfile # name of the Dockerfile
+
+    command: ['python', 'data_dump.py']
+    volumes:
+      - ./poems_data:/app/poems_data
+
+    networks:
+      - poems_data_network
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+
+networks:
+  elt_network:
+    driver: bridge
