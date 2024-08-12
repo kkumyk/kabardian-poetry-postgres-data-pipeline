@@ -17,10 +17,10 @@ load_dotenv()
 time.sleep(10)
 
 conn_params = {
-    'dbname':os.getenv('SOURCE_NAME'), 
-    'user':os.getenv('SOURCE_USER'),
-    'password':os.getenv('SOURCE_PASSWORD'), 
-    'host':os.getenv('SOURCE_HOST') 
+    'dbname':os.getenv('DB_NAME'), 
+    'user':os.getenv('DB_USER'),
+    'password':os.getenv('DB_PASSWORD'), 
+    'host':os.getenv('DB_HOST') 
 }
     
 # initialize conn and cur to None
@@ -67,7 +67,7 @@ try:
     conn.commit()
     
     
-    poem_file_path = 'etl_script/poems_contents/poem.txt'
+    poem_file_path = 'poems_contents/poem.txt'
     poem_id = None # the ID of the poem being processed
     
     def insert_poem(poem_file):
