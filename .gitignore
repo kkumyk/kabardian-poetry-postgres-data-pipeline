@@ -1,4 +1,1 @@
 .env
-copy_table.sh
-docker-compose.yml
-Dockerfile
