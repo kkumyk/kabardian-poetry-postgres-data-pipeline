@@ -67,7 +67,7 @@ try:
     conn.commit()
     
     
-    poem_file_path = 'poems_contents/poem.txt'
+    poem_file_path = 'poems/poem.txt'
     poem_id = None # the ID of the poem being processed
     
     def insert_poem(poem_file):
@@ -87,16 +87,26 @@ try:
         title = poem_contents["title"]
         author = poem_contents["author"]
         contents = poem_contents["contents"]
-        
-
         poem_to_insert = (title, author, contents)
         
         return poem_to_insert
     
-    
-    insert_poem_query = 'INSERT INTO poems_poem (title, author, contents) VALUES  (%s,%s,%s) ON CONFLICT (title, author) DO NOTHING RETURNING id;'
+    insert_poem_query = '''
+        INSERT INTO poems_poem (title, author, contents)
+        VALUES  (%s,%s,%s)
+        ON CONFLICT (title, author) DO NOTHING
+        RETURNING id;
+    '''
     cur.execute(insert_poem_query, insert_poem(poem_file_path))
-    poem_id = cur.fetchone()[0]
+    
+    # check if cur.fetchone() returns a result   
+    result = cur.fetchone()
+    if result:
+        poem_id = result[0]
+    else:
+        raise Exception("No new poem was inserted, it might already exist in the database. Execution stopped.")
+
+    
     conn.commit()
     
     
