@@ -29,7 +29,7 @@ This repository contains an Extract, Transform, Load (ETL) project that utilizes
 
 ## Repository Structure
 
-
+## How It Works
 
 <details>
 
@@ -53,6 +53,7 @@ To deactivate the virtual environment without leaving the shell use deactivate.
 ```bash
    deactivate
 ```
+
 #### 2. Directly Use the Virtual Environment (Without Activating the Shell)
 If you don’t want to activate the entire shell but just want to run commands within the Poetry-managed virtual environment, you can prefix your commands with poetry run.
 ```bash
@@ -62,10 +63,55 @@ Or to run a dbt command:
 ```bash
 poetry run dbt run
 ```
+
+#### 3. Keep Dependencies Updated
+```bash
+poetry update
+```
+
 </details>
 
+----
 
-## How It Works
+<details>
+<summary>DBT Installation With Python Poetry</summary>
+
+#### 1. Add dbt-core dbt-postgres to your dependencies
+```bash
+poetry add dbt-core dbt-postgres
+```
+Verify installation:
+
+```bash
+poetry shell
+dbt --version
+```
+#### 2. Set Up a DBT Project and navigate into this project
+```bash
+dbt init kabardian_poems
+cd kabardian_poems
+```
+#### 3. Configure profiles.yml file to connect to PostgreSQL
+dbt requires a profiles.yml file to connect to your PostgreSQL database. The file is usually located in ~/.dbt/. Configure the file:
+
+```yml
+kabardian_poems:
+  outputs:
+    dev:
+      dbname: your_db_name
+      host: your_host
+      pass: your_password
+      port: 5432
+      schema: "{{ env_var('DBT_SCHEMA', 'your_dbt_schema') }}"
+      threads: 4
+      type: postgres
+      user: your_user
+  target: dev
+```
+
+</details>
+
+---- 
 
 ## Getting Started
 
