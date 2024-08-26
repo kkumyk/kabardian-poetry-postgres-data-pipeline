@@ -35,18 +35,33 @@ This repository contains an Extract, Transform, Load (ETL) project that utilizes
 
 <summary>Dependency Management With Python Poetry</summary>
 
-### Activating the virtual environment
-- To activate the virtual environment, create a nested shell with poetry shell.
-
-- To deactivate the virtual environment and exit this new shell type exit.
-- To deactivate the virtual environment without leaving the shell use deactivate.
-
-```python
-   poetry shell
-   exit / deactivate
-```
+### Activating Virtual Environment
 Sources: [Real Python](https://realpython.com/dependency-management-python-poetry/), [Poetry Docs](https://python-poetry.org/docs/basic-usage/)
 
+#### 1. Activate Poetry Shell
+To activate the virtual environment, create a nested shell with poetry shell. This will activate the environment and start a new shell session within it.
+
+After running this command, you'll be inside the virtual environment, and any Python commands or scripts you run will use the dependencies installed in this environment.
+```bash
+   poetry shell
+```
+To deactivate the virtual environment and exit this new shell type exit.
+```bash
+   exit
+```
+To deactivate the virtual environment without leaving the shell use deactivate.
+```bash
+   deactivate
+```
+#### 2. Directly Use the Virtual Environment (Without Activating the Shell)
+If you don’t want to activate the entire shell but just want to run commands within the Poetry-managed virtual environment, you can prefix your commands with poetry run.
+```bash
+poetry run python insert_data.py
+```
+Or to run a dbt command:
+```bash
+poetry run dbt run
+```
 </details>
 
 
