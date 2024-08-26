@@ -29,6 +29,27 @@ This repository contains an Extract, Transform, Load (ETL) project that utilizes
 
 ## Repository Structure
 
+
+
+<details>
+
+<summary>Dependency Management With Python Poetry</summary>
+
+### Activating the virtual environment
+- To activate the virtual environment, create a nested shell with poetry shell.
+
+- To deactivate the virtual environment and exit this new shell type exit.
+- To deactivate the virtual environment without leaving the shell use deactivate.
+
+```python
+   poetry shell
+   exit / deactivate
+```
+Sources: [Real Python](https://realpython.com/dependency-management-python-poetry/), [Poetry Docs](https://python-poetry.org/docs/basic-usage/)
+
+</details>
+
+
 ## How It Works
 
 ## Getting Started
