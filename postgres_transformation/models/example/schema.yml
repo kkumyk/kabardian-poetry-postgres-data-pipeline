@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: words_per_poem
+    description: "A model that joins poems with their associated words."
+    columns:
+      - name: poem_id
+        description: "Unique identifier for each poem."
+        tests:
+          - not_null
+          - unique
+      - name: title
+        description: "The title of the poem."
+        tests:
+          - not_null
+      - name: author
+        description: "The author of the poem."
+        tests:
+          - not_null
+      - name: contents
+        description: "the actual poem"
+        tests:
+          - not_null
+      - name: poem_word_id
+        description: "poem word combination"
+        tests:
+          - not_null
+          - unique
+      - name: word_id
+        description: "word id"
+        tests:
+          - not_null
+      - name: word
+        description: "The word associated with the poem."
+        tests:
+          - not_null
+      - name: eng_transl
+        description: "eng translation"
+        tests:
+          - not_null
+      - name: rus_transl
+        description: "rus translation"
+        tests:
+          - not_null

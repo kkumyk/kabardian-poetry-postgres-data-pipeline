@@ -87,9 +87,11 @@ poetry shell
 dbt --version
 ```
 #### 2. Set Up a DBT Project and navigate into this project
+
+
 ```bash
-dbt init kabardian_poems
-cd kabardian_poems
+dbt init postgres_transformation
+cd postgres_transformation
 ```
 #### 3. Configure profiles.yml file to connect to PostgreSQL
 dbt requires a profiles.yml file to connect to your PostgreSQL database. The file is usually located in ~/.dbt/. Configure the file:
@@ -108,6 +110,16 @@ kabardian_poems:
       user: your_user
   target: dev
 ```
+#### 4. Replace `view` for `table` in the dbt_project.yml file
+
+```yml
++materialized: table #view
+```
+
+#### 5. Run dbt project with Python Poetry
+```bash
+poetry run dbt run
+```
 
 </details>
 
@@ -120,10 +132,23 @@ kabardian_poems:
 
 
 
+<!-- 
+# SELECT * FROM poems_poem p
+# JOIN poems_poem_words pw on pw.poem_id = p.id
+# JOIN poems_word w on w.id = pw.word_id; -->
 
 
+<!--
+
+SELECT * FROM poems_poem p
+JOIN poems_poem_words pw on pw.poem_id = p.id
+JOIN poems_word w on w.id = pw.word_id;
 
 
+SELECT * FROM poems_poem p
+JOIN poems_poem_words pw on pw.poem_id = p.poem_id
+JOIN poems_word w on w.word_id = pw.word_id;
+-->
 
 
 

@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: test_poetry_api
+    description: "Raw data from the local PostgreSQL database."
+    database: test_poetry_api
+    schema: public
+    tables:
+      - name: poems_poem
+        description: "List of poems."
+      - name: poems_poem_words
+        description: "Words per poem."
+      - name: poems_word
+        description: "Collected words."
