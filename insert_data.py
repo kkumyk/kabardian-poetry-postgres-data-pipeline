@@ -53,7 +53,7 @@ try:
 
     cur.execute('''
     CREATE TABLE IF NOT EXISTS poems_poem_words (
-        poem_word_id SERIAL PRIMARY KEY,
+        id SERIAL PRIMARY KEY,
         poem_id INTEGER NOT NULL,
         word_id INTEGER NOT NULL,
         FOREIGN KEY (poem_id) REFERENCES poems_poem(poem_id) ON DELETE CASCADE,
