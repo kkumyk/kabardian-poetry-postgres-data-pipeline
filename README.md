@@ -31,6 +31,14 @@ This repository contains an Extract, Transform, Load (ETL) project that utilizes
 
 ## How It Works
 
+### Current Process
+
+1. Poems added to the txt files.
+2. Run insert_data.py in Poetry shell to identify poems' vocabulary and scrape words' translations from an online dictionary and add them together with the poems to a local Postgres database.
+3. Use pg_dump to copy the contents of the tables from the local database to the corresponding tables in the live database. The is done via command line at the moment. In the next iteration this step will be complete via Docker.
+4. Run dbt models in the postgres_transformation project to update the model.
+
+</br>
 <details>
 
 <summary>Dependency Management With Python Poetry</summary>
