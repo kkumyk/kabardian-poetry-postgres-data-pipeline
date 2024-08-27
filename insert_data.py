@@ -32,7 +32,7 @@ try:
     # create table if it doesn't exist
     cur.execute('''
     CREATE TABLE IF NOT EXISTS poems_poem (
-        id SERIAL PRIMARY KEY,
+        poem_id SERIAL PRIMARY KEY,
         title TEXT,
         author TEXT,
         contents TEXT NOT NULL,
@@ -43,7 +43,7 @@ try:
 
     cur.execute('''
     CREATE TABLE IF NOT EXISTS poems_word (
-        id SERIAL PRIMARY KEY,
+        word_id SERIAL PRIMARY KEY,
         word TEXT NOT NULL UNIQUE,
         eng_transl TEXT NOT NULL,
         rus_transl TEXT NOT NULL
@@ -53,11 +53,11 @@ try:
 
     cur.execute('''
     CREATE TABLE IF NOT EXISTS poems_poem_words (
-        id SERIAL PRIMARY KEY,
+        poem_word_id SERIAL PRIMARY KEY,
         poem_id INTEGER NOT NULL,
         word_id INTEGER NOT NULL,
-        FOREIGN KEY (poem_id) REFERENCES poems_poem(id) ON DELETE CASCADE,
-        FOREIGN KEY (word_id) REFERENCES poems_word(id) ON DELETE CASCADE,
+        FOREIGN KEY (poem_id) REFERENCES poems_poem(poem_id) ON DELETE CASCADE,
+        FOREIGN KEY (word_id) REFERENCES poems_word(word_id) ON DELETE CASCADE,
         UNIQUE (poem_id, word_id)
     );
     ''')
@@ -152,10 +152,10 @@ try:
         words_to_insert = []
         
         '''
-        create a hash map for mapping poem id to word ids found in that poem
+        create a hash map for mapping poem_id to word_ids found in that poem
         the code should check if the words that had been found in the poem was previously added to the word pool
-        if the above is the case, the existing word id should be allocated to the poem
-        if not, a newly allocated word id should be added
+        if the above is the case, the existing word_id should be allocated to the poem
+        if not, a newly allocated word_id should be added
         ''' 
         word_to_id_map = {}
         
@@ -165,14 +165,14 @@ try:
             rus_transl = word_obj["rus_transl"]
             
             # check if the word already exists in the words pool table
-            cur.execute('SELECT id FROM poems_word WHERE word = %s', (word,))
+            cur.execute('SELECT word_id FROM poems_word WHERE word = %s', (word,))
             word_id_result = cur.fetchone()
             
             if word_id_result:
                 word_id = word_id_result[0]
             else:
-                # insert the new word and get its id TODO
-                cur.execute('INSERT INTO poems_word (word, eng_transl, rus_transl) VALUES (%s, %s, %s) RETURNING id', (word, eng_transl, rus_transl))
+                # insert the new word and get its word_id TODO
+                cur.execute('INSERT INTO poems_word (word, eng_transl, rus_transl) VALUES (%s, %s, %s) RETURNING word_id', (word, eng_transl, rus_transl))
                 word_id = cur.fetchone()[0]
             
             word_to_id_map[word] = word_id
@@ -195,7 +195,7 @@ try:
                 INSERT INTO poems_poem (title, author, contents)
                 VALUES  (%s,%s,%s)
                 ON CONFLICT (title, author) DO NOTHING
-                RETURNING id;
+                RETURNING poem_id;
             '''
             
             # insert the poem and retrieve its ID
