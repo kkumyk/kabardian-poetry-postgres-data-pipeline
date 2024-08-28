@@ -57,6 +57,7 @@ WHERE w.word LIKE 'р%';
 -- Similar to German, Kabardian is known for creating words from existing words resulting in some lengthy words such as: 
 -- ЗЫКЪЫСХУКIУЭЦIЫГЪЭДЖЭРЭЗЫКIЫЖЫФЫНУТЭКЪЫМИ (couldn't get out)
 -- https://www.youtube.com/watch?v=Te_2eA1t1dQ
+
 -- find the top 10 longest words in the poems_word table
 
 SELECT word, length(word) as word_length FROM poems_word ORDER BY word_length LIMIT 10;
