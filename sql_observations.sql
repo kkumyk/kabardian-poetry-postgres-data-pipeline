@@ -29,6 +29,10 @@ ORDER BY total_words;
 --       24 |           1
 --       79 |           2
 
+-- use HAVING to filter on aggregated fields;
+-- HAVING is the aggregated equivalent to WHERE.
+-- The WHERE keyword filters individual records, HAVING filters aggregations.
+
 -- select words starting with letter "р";
 -- the only words that start with this letter are those that were borrowed from other languages such as Russian;
 -- consequently, there is a limited number of these words in Kabardian language;
