@@ -59,10 +59,10 @@ WHERE w.word LIKE 'р%';
 --      691 | розэ | rose       |      67 | Удз гъэгъа щхъуантIэ | Бицу Анатолэ
 
 
--- select all words that contain "кхъу" letter that require four symbols to represent a single sound in Kabardian
+-- select all words that contain "кхъу" letter which consist of four symbols to represent a single sound in Kabardian
 -- for sound see/listen to: https://kkumyk.github.io/circassian-language/kabardian-alphabet.html
 
-SELECT word, eng_transl FROM poems_word WHERE word LIKE 'кхъу%';
+SELECT word, eng_transl FROM poems_word WHERE word LIKE '%кхъу%';
 
 --   word  |          eng_transl           
 -- --------+-------------------------------
