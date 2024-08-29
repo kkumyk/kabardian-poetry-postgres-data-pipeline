@@ -29,6 +29,7 @@ ORDER BY total_words;
 --       24 |           1
 --       79 |           2
 
+-- The HAVING Statement
 -- use HAVING to filter on aggregated fields;
 -- HAVING is the aggregated equivalent to WHERE.
 -- The WHERE keyword filters individual records, HAVING filters aggregations.
@@ -58,6 +59,17 @@ WHERE w.word LIKE 'р%';
 --      691 | розэ | rose       |      67 | Удз гъэгъа щхъуантIэ | Бицу Анатолэ
 
 
+-- select all words that contain "кхъу" letter that require four symbols to represent a single sound in Kabardian
+-- for sound see/listen to: https://kkumyk.github.io/circassian-language/kabardian-alphabet.html
+
+SELECT word, eng_transl FROM poems_word WHERE word LIKE 'кхъу%';
+
+--   word  |          eng_transl           
+-- --------+-------------------------------
+--  кхъухь | ship, steamer, sailing vessel
+
+
+
 -- Similar to German, Kabardian is known for creating words from existing words resulting in some lengthy words such as: 
 -- ЗЫКЪЫСХУКIУЭЦIЫГЪЭДЖЭРЭЗЫКIЫЖЫФЫНУТЭКЪЫМИ (couldn't get out)
 -- https://www.youtube.com/watch?v=Te_2eA1t1dQ
@@ -78,3 +90,7 @@ SELECT word, length(word) as word_length FROM poems_word ORDER BY word_length LI
 --  тхьэрыкъуэ       |          10 | 1. dove, pigeon
 --  къущхьэхъу       |          10 | mountain pasture
 --  пцӏащхъуэ        |           9 | swallow
+
+
+
+
