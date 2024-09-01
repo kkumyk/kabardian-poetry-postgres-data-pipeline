@@ -55,10 +55,28 @@ JOIN poems_poem_words pw ON pw.poem_id = p.poem_id
 JOIN poems_word w ON w.word_id = pw.word_id
 WHERE w.word LIKE 'р%';
 
-
 --  word_id | word | eng_transl | poem_id |        title         |    author    
 -- ---------+------+------------+---------+----------------------+--------------
 --      691 | розэ | rose       |      67 | Удз гъэгъа щхъуантIэ | Бицу Анатолэ
+
+
+-- select all words with адыгэ https://kbd.wiktionary.org/wiki/%D0%B0%D0%B4%D1%8B%D0%B3%D1%8D
+
+SELECT 
+    w.word, w.eng_transl, p.poem_id, p.title
+FROM poems_poem p
+JOIN poems_poem_words pw ON pw.poem_id = p.poem_id
+JOIN poems_word w ON w.word_id = pw.word_id
+WHERE w.word LIKE '%адыгэ%';
+
+--    word   |                                                        eng_transl                                                         | poem_id |             title             
+-- ----------+---------------------------------------------------------------------------------------------------------------------------+---------+-------------------------------
+--  адыгэбзэ | 1. Adyghe language (of the Kabardians, Cherkesses and Adygeans (Circassians)) 2. Kabardino-Cherkess (Circassian) language |       2 | Мэбзэрабзэ бзур, мэбзэрабзэ
+--  адыгэ    | Adyghe (name given to themselves by the Adygeans, Kabardians, and Cherkesses (Circassians).                               |      22 | Адыгэ уанащIэхэр
+--  адыгэш   | the Kabardian (Circassian) breed of horses (both for riding and as a pack-horse)                                          |      22 | Адыгэ уанащIэхэр
+--  адыгэ    | Adyghe (name given to themselves by the Adygeans, Kabardians, and Cherkesses (Circassians).                               |      32 | Ей, дунеижьурэ дыгъужь нэщIа…
+
+
 
 
 -- select all words that contain "кхъу" letter which consist of four symbols to represent a single sound in Kabardian
