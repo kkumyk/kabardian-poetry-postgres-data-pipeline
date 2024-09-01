@@ -2,7 +2,7 @@
 SELECT count(*) FROM poems_word;
 
 -- return the first three words form the table
-SELECT * FORM poems_word LIMIT 3;
+SELECT * FROM poems_word LIMIT 3;
 
 -- a number of words have incomplete translation in a form "see ..." referring to other translation source;
 -- return the words with this incomplete translation:
@@ -44,6 +44,7 @@ SELECT * FROM poems_word WHERE word LIKE 'р%';
 -- ---------+------+------------+------------
 --      691 | розэ | rose       | роза
 
+
 -- select words starting with letter "р" together with poems these words occur in
 
 SELECT 
@@ -53,6 +54,7 @@ FROM poems_poem p
 JOIN poems_poem_words pw ON pw.poem_id = p.poem_id
 JOIN poems_word w ON w.word_id = pw.word_id
 WHERE w.word LIKE 'р%';
+
 
 --  word_id | word | eng_transl | poem_id |        title         |    author    
 -- ---------+------+------------+---------+----------------------+--------------
@@ -69,14 +71,12 @@ SELECT word, eng_transl FROM poems_word WHERE word LIKE '%кхъу%';
 --  кхъухь | ship, steamer, sailing vessel
 
 
-
 -- Similar to German, Kabardian is known for creating words from existing words resulting in some lengthy words such as: 
 -- ЗЫКЪЫСХУКIУЭЦIЫГЪЭДЖЭРЭЗЫКIЫЖЫФЫНУТЭКЪЫМИ (couldn't get out)
 -- https://www.youtube.com/watch?v=Te_2eA1t1dQ
 
 -- find the top 10 longest words in the poems_word table
-
-SELECT word, length(word) as word_length FROM poems_word ORDER BY word_length LIMIT 10;
+SELECT word, length(word) as word_length, eng_transl FROM poems_word ORDER BY word_length desc LIMIT 10;
 
 --        word       | word_length |                                  eng_transl                                   
 -- ------------------+-------------+-------------------------------------------------------------------------------
