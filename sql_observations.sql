@@ -60,14 +60,14 @@ WHERE w.word LIKE 'р%';
 --      691 | розэ | rose       |      67 | Удз гъэгъа щхъуантIэ | Бицу Анатолэ
 
 
--- select all words with адыгэ https://kbd.wiktionary.org/wiki/%D0%B0%D0%B4%D1%8B%D0%B3%D1%8D
+-- select all words with адыгэ/шэрджэс https://kbd.wiktionary.org/wiki/%D0%B0%D0%B4%D1%8B%D0%B3%D1%8D
 
 SELECT 
     w.word, w.eng_transl, p.poem_id, p.title
 FROM poems_poem p
 JOIN poems_poem_words pw ON pw.poem_id = p.poem_id
 JOIN poems_word w ON w.word_id = pw.word_id
-WHERE w.word LIKE '%адыгэ%';
+WHERE w.word LIKE '%адыгэ%' OR w.word LIKE'%шэрджэс%';
 
 --    word   |                                                        eng_transl                                                         | poem_id |             title             
 -- ----------+---------------------------------------------------------------------------------------------------------------------------+---------+-------------------------------
@@ -75,7 +75,7 @@ WHERE w.word LIKE '%адыгэ%';
 --  адыгэ    | Adyghe (name given to themselves by the Adygeans, Kabardians, and Cherkesses (Circassians).                               |      22 | Адыгэ уанащIэхэр
 --  адыгэш   | the Kabardian (Circassian) breed of horses (both for riding and as a pack-horse)                                          |      22 | Адыгэ уанащIэхэр
 --  адыгэ    | Adyghe (name given to themselves by the Adygeans, Kabardians, and Cherkesses (Circassians).                               |      32 | Ей, дунеижьурэ дыгъужь нэщIа…
-
+--  шэрджэс  | 1. Cherkess (man, woman, nation) 2. Cherkess people (a common name for all Adyghe peoples)                                |      91 | Анэдэлъхубзэ
 
 
 
