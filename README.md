@@ -1,9 +1,10 @@
 # Kabardian Poetry Data Pipeline
 
 
-The main goal of this project is to populate the [Kabardian Poetry Collection](https://kabardian-poems-collection-b906b8b63b33.herokuapp.com/) with poems in [Kabardian language](https://en.wikipedia.org/wiki/Kabardian_language) - a [potentially vulnerable](https://en.wal.unesco.org/countries/russian-federation/languages/kabardian)* language spoken in Northwest Caucasus.
+The main goal of this project is to populate the [Kabardian Poetry Collection](https://kabardian-poems-collection-b906b8b63b33.herokuapp.com/) with poems in [Kabardian language](https://en.wikipedia.org/wiki/Kabardian_language) - a [potentially vulnerable](https://en.wal.unesco.org/countries/russian-federation/languages/kabardian)* language spoken in Northwest Caucasus which even ChatGPT struggles to recognise:
+![ChatGPT response](./docs/madeup-language.png)
 
-
+ 
 The poems collection site presents each poem together with the poem's vocabulary - words that the custom Python script could find in the [kbd.wiktionary.org/wiki/](https://kbd.wiktionary.org/wiki/%D0%9D%D0%B0%D0%BF%D1%8D%D0%BA%D3%80%D1%83%D1%8D%D1%86%D3%80_%D0%BD%D1%8D%D1%85%D1%8A%D1%8B%D1%89%D1%85%D1%8C%D1%8D) dictionary and extract their translation.
 
 The insert_data.py script performs the following steps to extract, transform and load data into the local database:
@@ -21,7 +22,7 @@ Once the data is extracted and loaded to the local database, the contents of its
 
 ## Entity Relationship Diagram for Kabardian Poetry Collection
 
-![alt text](./docs/poems_collection_erd.png "Kabardian Poetry Collection Postgres DB ERD")
+![Kabardian Poetry Collection Postgres DB ERD](./docs/poems_collection_erd.png "Kabardian Poetry Collection Postgres DB ERD")
 
 
 ## How It Works
