@@ -125,3 +125,23 @@ poetry run dbt run
 </details>
 
 ---- 
+
+
+<details>
+<summary>Retrieve recent web server logs for your Heroku app via CLI</summary>
+
+1. Log in to Heroku via terminal <code>heroku login</code>
+
+- This command will open a browser window prompting you to enter your Heroku credentials (email and password).
+- Once logged in, you’ll be redirected back to the CLI, where you should see a message indicating you’re logged in.
+
+2. Retrieve recent logs with <code>--num</code> flag
+- You can adjust 1500 to any number up to Heroku's current maximum.
+   ```bash
+   heroku logs --app your-app-name --num 1500
+   ```
+3. Save logs to a file
+   ```bash
+   heroku logs --app your-app-name --num 1500 > recent-logs.txt
+   ```
+</details>
