@@ -1,4 +1,4 @@
-# Kabardian Poetry Data Pipeline
+# Kabardian Poetry ETL Pipeline
 
 
 The main goal of this project is to populate the [Kabardian Poetry Collection](https://kabardian-poems-collection-b906b8b63b33.herokuapp.com/) with poems in [Kabardian language](https://en.wikipedia.org/wiki/Kabardian_language) - a [potentially vulnerable](https://en.wal.unesco.org/countries/russian-federation/languages/kabardian)* language spoken in Northwest Caucasus which even ChatGPT struggles to recognise:
